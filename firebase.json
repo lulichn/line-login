@@ -1,0 +1,39 @@
+{
+  "functions": {
+    "predeploy": [
+      "yarn --cwd \"$RESOURCE_DIR\" lint",
+      "yarn --cwd \"$RESOURCE_DIR\" build"
+    ],
+    "source": "functions"
+  },
+  "hosting": {
+    "predeploy" : [
+      "yarn clean",
+      "yarn build"
+    ],
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/auth",
+        "function": "api"
+      },
+      {
+        "source": "/goToAuthPage",
+        "function": "api"
+      },
+      {
+        "source": "/api/**",
+        "function": "api"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
