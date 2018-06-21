@@ -26,15 +26,22 @@ export default Vue.extend({
   },
   methods: {
     verify() {
-      console.log('aaaaa');
       axios.get('/api/verify')
         .then((response) => {
           console.log(response)
         })
     },
     refreshToken() {
+      axios.get('/api/refreshToken')
+        .then((response) => {
+          console.log(response)
+        })
     },
     revoke() {
+      axios.get('/api/revoke')
+        .then((response) => {
+          console.log(response)
+        })
     }
   }
 })
